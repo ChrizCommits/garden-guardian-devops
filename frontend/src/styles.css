@@ -1,0 +1,449 @@
+:root {
+  color: #26342a;
+  background: #f5f1e8;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  min-height: 42px;
+  border: 1px solid #b9c7a6;
+  border-radius: 8px;
+  background: #fffdf7;
+  color: #26342a;
+  cursor: pointer;
+  padding: 0 14px;
+}
+
+button:hover {
+  border-color: #6e8b58;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.primary {
+  border-color: #2f6d4f;
+  background: #2f6d4f;
+  color: #ffffff;
+}
+
+.quiet {
+  background: transparent;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(191, 218, 176, 0.48), rgba(245, 241, 232, 0.78) 360px),
+    #f5f1e8;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 22px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+}
+
+.brand small {
+  display: block;
+  color: #5e6b5f;
+  margin-top: 2px;
+}
+
+.brand-mark,
+.animal-art,
+.guide-badge {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f0c35b;
+  color: #26342a;
+  font-weight: 800;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 22px;
+}
+
+.login-layout,
+.dashboard-grid,
+.two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.intro-panel {
+  min-height: 420px;
+  border-radius: 8px;
+  padding: 40px;
+  color: #ffffff;
+  background:
+    linear-gradient(rgba(31, 74, 53, 0.84), rgba(31, 74, 53, 0.74)),
+    linear-gradient(145deg, #2f6d4f 0 34%, #8eb36a 34% 62%, #d9c37a 62% 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-panel::before,
+.intro-panel::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.intro-panel::before {
+  width: 72%;
+  height: 34%;
+  left: -8%;
+  bottom: -8%;
+  border-radius: 50% 50% 0 0;
+  background: rgba(245, 241, 232, 0.2);
+}
+
+.intro-panel::after {
+  width: 170px;
+  height: 170px;
+  right: 36px;
+  top: 34px;
+  border-radius: 50%;
+  background: rgba(240, 195, 91, 0.82);
+  box-shadow: -180px 250px 0 -48px rgba(245, 241, 232, 0.32);
+}
+
+.intro-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.intro-panel h1,
+.page-title h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 6vw, 4.8rem);
+  line-height: 0.98;
+}
+
+.intro-panel p {
+  max-width: 560px;
+  font-size: 1.08rem;
+}
+
+.login-card,
+.tip-card,
+.side-panel,
+.stat-card,
+.animal-card,
+.guide-item {
+  border: 1px solid rgba(103, 127, 87, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 253, 247, 0.88);
+  box-shadow: 0 16px 36px rgba(55, 74, 46, 0.08);
+}
+
+.login-card {
+  padding: 26px;
+}
+
+.login-card label,
+.login-card input {
+  display: block;
+  width: 100%;
+}
+
+.login-card label {
+  margin: 16px 0 8px;
+  color: #49584a;
+}
+
+.login-card input {
+  min-height: 46px;
+  border: 1px solid #b9c7a6;
+  border-radius: 8px;
+  padding: 0 12px;
+  background: #ffffff;
+}
+
+.login-card .primary {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.fine-print,
+.notice,
+.status {
+  color: #5e6b5f;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #52735d;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.intro-panel .eyebrow {
+  color: #f0d98f;
+}
+
+.page-title {
+  margin-bottom: 22px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  padding: 16px;
+}
+
+.stat-card span {
+  display: block;
+  color: #5e6b5f;
+  margin-bottom: 6px;
+}
+
+.stat-card strong {
+  font-size: 1.35rem;
+}
+
+.tip-card,
+.side-panel,
+.unlock-section {
+  padding: 22px;
+}
+
+.tip-heading,
+.card-meta,
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.reward-pill,
+.animal-chips span,
+.card-meta span {
+  border-radius: 999px;
+  background: #e8efd8;
+  color: #35563e;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.action-box {
+  margin: 18px 0;
+  border-left: 4px solid #d69a3a;
+  background: #fff7e4;
+  padding: 12px 14px;
+}
+
+.action-box p,
+.warning,
+.success,
+.error,
+.notice {
+  margin-bottom: 0;
+}
+
+.warning {
+  border-radius: 8px;
+  background: #fff1df;
+  color: #694818;
+  padding: 12px;
+}
+
+.animal-chips,
+.card-grid,
+.guide-grid,
+.mini-card-list {
+  display: grid;
+  gap: 14px;
+}
+
+.animal-chips {
+  grid-template-columns: repeat(auto-fit, minmax(96px, max-content));
+  margin: 16px 0;
+}
+
+.button-row {
+  justify-content: flex-start;
+  margin-top: 14px;
+}
+
+.success {
+  color: #2f6d4f;
+}
+
+.error {
+  color: #9b2c2c;
+}
+
+.side-panel h2,
+.stack-page h2 {
+  margin-top: 0;
+}
+
+.animal-card {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 14px;
+  padding: 16px;
+}
+
+.animal-art {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #f0c35b, #8eb36a);
+}
+
+.animal-card h3 {
+  margin: 8px 0 2px;
+}
+
+.animal-card p {
+  margin: 6px 0;
+}
+
+.animal-name {
+  color: #52735d;
+  font-weight: 700;
+}
+
+.card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.unlock-section {
+  margin-top: 24px;
+}
+
+.stack-page {
+  display: grid;
+  gap: 24px;
+}
+
+.history-list {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.history-list li {
+  display: grid;
+  gap: 4px;
+  border-bottom: 1px solid rgba(103, 127, 87, 0.2);
+  padding: 0 0 10px;
+}
+
+.history-list span {
+  color: #5e6b5f;
+}
+
+.guide-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.guide-item {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 14px;
+  padding: 18px;
+}
+
+.guide-badge {
+  width: 54px;
+  height: 54px;
+}
+
+.guide-item h2 {
+  margin: 0 0 8px;
+}
+
+@media (max-width: 760px) {
+  .topbar,
+  .login-layout,
+  .dashboard-grid,
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .intro-panel {
+    min-height: 320px;
+    padding: 28px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .animal-card {
+    grid-template-columns: 58px 1fr;
+  }
+
+  .animal-art {
+    width: 58px;
+    height: 58px;
+  }
+}
