@@ -1,0 +1,23 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: gardenguardian-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - GARDENGUARDIAN_DATABASE_URL=sqlite:////data/gardenguardian.db
+    volumes:
+      - gardenguardian_data:/data
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: gardenguardian-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  gardenguardian_data:
