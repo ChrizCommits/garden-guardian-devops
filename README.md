@@ -16,6 +16,9 @@ Login is demo-only. Users enter a username, with no password and no email. This 
 
 - Backend: Python 3.12, FastAPI, SQLite, SQLAlchemy, Pydantic, pytest
 - Frontend: React, Vite, TypeScript
+- Containerization: Docker and Docker Compose
+- CI/CD: GitHub Actions
+- Container registry: GitHub Container Registry / GitHub Packages
 
 ## Install
 
@@ -87,10 +90,94 @@ Then open `http://127.0.0.1:5173`.
 
 SQLite keeps the MVP simple, local, and easy to inspect for a university case study. It is enough for the demo data and user flow while leaving room to discuss later production database choices.
 
-## Intentionally not included
+## DevOps implementation status
 
-CI/CD configuration, GitHub Actions workflows, Docker files, docker-compose, deployment configuration, release process, approvals, and DevOps documentation are intentionally not included. They will be implemented manually later as part of the DevOps case study.
+The DevOps implementation is part of the university case study and includes version control, containerization, Continuous Integration, Continuous Delivery, and a protected pull request workflow.
 
-## CI/CD Quality Gate
+Implemented DevOps components:
 
-Changes to the main branch are protected by a pull request workflow. The CI pipeline runs backend tests, builds the frontend, and verifies the Docker build before changes can be merged.
+- Git and GitHub for version control and repository hosting
+- Feature branch workflow with pull requests into `main`
+- Protected `main` branch with required status checks
+- GitHub Actions CI workflow
+- GitHub Actions CD workflow
+- Dockerfiles for backend and frontend
+- Docker Compose for local multi-container execution
+- GitHub Container Registry / GitHub Packages for published container images
+
+## Run with Docker Compose
+
+From the project root:
+
+```powershell
+docker compose up --build
+```
+
+The Docker Compose setup builds and starts the containerized backend and frontend services from their Dockerfiles.
+
+To stop the containers:
+
+```powershell
+docker compose down
+```
+
+## CI workflow
+
+The project uses GitHub Actions for Continuous Integration.
+
+The CI workflow runs on pull requests targeting `main` and on pushes to `main`.
+
+The CI pipeline performs these checks:
+
+- Backend dependency installation
+- Backend tests with pytest
+- Frontend dependency installation
+- Frontend production build
+- Docker build verification through Docker Compose
+
+This ensures that code changes are automatically built and tested before they can become part of the protected `main` branch.
+
+## Branch protection and quality gate
+
+The `main` branch is protected by a pull request workflow.
+
+Before a pull request can be merged, the required GitHub Actions checks must pass:
+
+- Garden Guardian CI / Backend tests
+- Garden Guardian CI / Frontend build
+- Garden Guardian CI / Docker build
+
+This creates a quality gate: code changes are reviewed through a pull request and technically validated before integration into `main`.
+
+## CD workflow
+
+The project uses GitHub Actions for Continuous Delivery.
+
+The CD workflow builds Docker images for:
+
+- Backend
+- Frontend
+
+In pull requests, the workflow builds the images to verify that they are buildable.
+
+After changes are merged into `main`, the workflow publishes the images to GitHub Container Registry / GitHub Packages.
+
+Published package names:
+
+- `garden-guardian-devops-backend`
+- `garden-guardian-devops-frontend`
+
+This provides versioned, deployable container artifacts after successful integration.
+
+## Delivery status
+
+This project currently implements Continuous Delivery, not full Continuous Deployment.
+
+That means:
+
+- Code is automatically tested.
+- Docker images are automatically built.
+- Docker images are automatically published after merge to `main`.
+- Deployment to a live server or cloud platform is not automated yet.
+
+A future extension could add staging or production environments with manual approvals and an automated deployment target.
