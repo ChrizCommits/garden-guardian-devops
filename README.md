@@ -90,3 +90,7 @@ SQLite keeps the MVP simple, local, and easy to inspect for a university case st
 ## Intentionally not included
 
 CI/CD configuration, GitHub Actions workflows, Docker files, docker-compose, deployment configuration, release process, approvals, and DevOps documentation are intentionally not included. They will be implemented manually later as part of the DevOps case study.
+
+## CI/CD Quality Gate
+
+Changes to the main branch are protected by a pull request workflow. The CI pipeline runs backend tests, builds the frontend, and verifies the Docker build before changes can be merged.
