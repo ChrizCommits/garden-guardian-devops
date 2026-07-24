@@ -1,7 +1,6 @@
 # GardenGuardian
 
-GardenGuardian is a clean MVP web application for a university DevOps case study. It helps users support wild animals in a garden or local environment with small, seasonal, responsible actions.
-
+GardenGuardian is an MVP web application for a university DevOps case study. It helps users support wild animals in a garden or local environment with small, seasonal, responsible actions.
 The app shows a daily wildlife-support tip, lets a user start a username-only demo session, and awards points, streak progress, and matching animal cards after a completed action.
 
 ## Safety note
@@ -168,16 +167,21 @@ Published package names:
 - `garden-guardian-devops-frontend`
 
 This provides versioned, deployable container artifacts after successful integration.
+After publication, the workflow processes the `staging` environment automatically. The `production` environment requires manual approval before the workflow can continue.
 
 ## Delivery status
 
-This project currently implements Continuous Delivery, not full Continuous Deployment.
+This project implements Continuous Delivery, not full Continuous Deployment.
 
 That means:
 
 - Code is automatically tested.
 - Docker images are automatically built.
-- Docker images are automatically published after merge to `main`.
-- Deployment to a live server or cloud platform is not automated yet.
+- After a merge into `main`, the images are published with `latest` and commit-SHA tags.
+- The `staging` environment is processed automatically.
+- The `production` environment requires manual approval.
+- No deployment to a live server or cloud platform is performed yet.
 
-A future extension could add staging or production environments with manual approvals and an automated deployment target.
+The GitHub Environments represent controlled delivery stages, not separate running servers. A future extension could deploy the published images to real staging and production systems.
+
+
